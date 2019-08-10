@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useReducer } from "react";
 import { Modal, Form, Input, Icon, Select } from "antd";
+import Axios from "axios";
 
 const formItemLayout = {
   labelCol: {
@@ -13,8 +14,38 @@ const formItemLayout = {
 };
 
 export default function ModalRecord({ visible, title, close }) {
+  const [state, setState] = useReducer((a, b) => ({ ...a, ...b }), {
+    namaPenuh: "",
+    emel: "",
+    negeri: "Selangor"
+  });
+
+  const simpan = async () => {
+    const API_URL = localStorage.getItem("API_URL");
+
+    try {
+      await Axios.put(API_URL + "/pelajar", {
+        namaPenuh: state.namaPenuh,
+        emel: state.emel,
+        negeri: state.negeri
+      });
+    } catch (e) {
+      Modal.error({
+        title: "Error",
+        content: e.message
+      });
+    }
+  };
+
   return (
-    <Modal visible={visible} title={title} onCancel={close} okText="Simpan" cancelText="Tutup">
+    <Modal
+      visible={visible}
+      title={title}
+      onCancel={close}
+      okText="Simpan"
+      cancelText="Tutup"
+      onOk={simpan}
+    >
       <Form {...formItemLayout}>
         <Form.Item label="Nama Penuh">
           <Input placeholder="Nama Penuh" type="text" addonAfter={<Icon type="user" />} />
@@ -25,7 +56,7 @@ export default function ModalRecord({ visible, title, close }) {
         </Form.Item>
 
         <Form.Item label="Negeri">
-          <Select>
+          <Select value={state.negeri} onChange={value => setState({ negeri: value })}>
             <Select.Option value="Johor">Johor</Select.Option>
             <Select.Option value="Kedah">Kedah</Select.Option>
             <Select.Option value="Kelantan">Kelantan</Select.Option>
