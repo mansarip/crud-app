@@ -4,11 +4,15 @@ import ModalRecord from "./ModalRecord";
 
 export default function App() {
   const [state, setState] = useReducer((a, b) => ({ ...a, ...b }), {
-    isShowModalRecord: true
+    isShowModalRecord: false
   });
 
   return (
     <>
+      <div className="topbar">
+        <h3 className="title">CRUD-UI</h3>
+      </div>
+
       <div className="wrapper">
         <Input.Search placeholder="Search" style={{ width: 300 }} />
 
@@ -36,8 +40,8 @@ export default function App() {
               dataIndex: "namaPenuh"
             },
             {
-              title: "Jantina",
-              dataIndex: "jantina"
+              title: "Emel",
+              dataIndex: "emel"
             },
             {
               title: "Negeri",

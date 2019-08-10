@@ -26,7 +26,22 @@ export default function ModalRecord({ visible, title, close }) {
 
         <Form.Item label="Negeri">
           <Select>
-            <Select.Option value="selangor">Selangor</Select.Option>
+            <Select.Option value="Johor">Johor</Select.Option>
+            <Select.Option value="Kedah">Kedah</Select.Option>
+            <Select.Option value="Kelantan">Kelantan</Select.Option>
+            <Select.Option value="Melaka">Melaka</Select.Option>
+            <Select.Option value="Negeri Sembilan">Negeri Sembilan</Select.Option>
+            <Select.Option value="Pahang">Pahang</Select.Option>
+            <Select.Option value="Penang">Penang</Select.Option>
+            <Select.Option value="Perak">Perak</Select.Option>
+            <Select.Option value="Perlis">Perlis</Select.Option>
+            <Select.Option value="Selangor">Selangor</Select.Option>
+            <Select.Option value="Sabah">Sabah</Select.Option>
+            <Select.Option value="Sarawak">Sarawak</Select.Option>
+            <Select.Option value="Terengganu">Terengganu</Select.Option>
+            <Select.Option value="WP Kuala Lumpur">WP Kuala Lumpur</Select.Option>
+            <Select.Option value="WP Putrajaya">WP Putrajaya</Select.Option>
+            <Select.Option value="WP Labuan">WP Labuan</Select.Option>
           </Select>
         </Form.Item>
       </Form>
